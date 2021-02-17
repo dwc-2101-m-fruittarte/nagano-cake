@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
 
-  attachment :image_id
+  attachment :image
 
 end
