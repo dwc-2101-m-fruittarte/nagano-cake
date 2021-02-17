@@ -1,0 +1,35 @@
+<div class="container my-5">
+  <div class="row">
+    <h2>商品編集</h2>
+  </div>
+    <%= form_with model: @product, local:true do |f| %>
+    <div class="row mt-3">
+      <div class="col-sm-3">
+        <%= f.label :商品画像 %>
+        <%= f.attachment_field :image %>
+      </div>
+
+      <div class="col-sm-5">
+        <div class="form-group row">
+          <%= f.label :商品名, class: "col-sm-4" %>
+          <%= f.text_field :name, class: "form-control col-sm-8" %>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label :商品説明, class: "col-sm-4" %>
+          <%= f.text_area :introduction, class: "form-control col-sm-8" %>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label :税抜価格, class: "col-sm-4" %>
+          <%= f.text_field :price, class: "form-control col-sm-7" %>
+          <span class="mt-auto ml-3">円</span>
+        </div>
+      </div>
+
+      <div class="col-sm-3 mt-auto ml-5">
+        <%= f.submit "編集" %>
+      </div>
+    </div>
+  <% end %>
+</div>
