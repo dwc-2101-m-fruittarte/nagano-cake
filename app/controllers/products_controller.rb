@@ -1,21 +1,18 @@
 class ProductsController < ApplicationController
-  
-  def new
-  end
-
-  def create
-  end
 
   def index
+    @products = Product.all
   end
 
   def show
+    @product = product.find(params[:id])
+    @cart_items = CartItem.new
   end
+  
+   private
 
-  def edit
-  end
-
-  def update
+  def product_params
+    params.require(:product).permit(:genre_id, :name, :introduction, :price, :image_id, :is_active,)
   end
   
 end
