@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
 
-  devise_for :managers
+  devise_for :managers, controllers: {
+    sessions:      'managers/sessions',
+    passwords:     'managers/passwords',
+    registrations: 'managers/registrations'
+  }
+  namespace :manager do
+    resources :products
+    resources :customers
+    resources :orders
+  end
+  
   devise_for :customers
   root :to => "homes#top"
   get "homes/about" => "homes#about"
