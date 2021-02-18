@@ -5,12 +5,12 @@ Rails.application.routes.draw do
     passwords:     'managers/passwords',
     registrations: 'managers/registrations'
   }
-  namespace :manager do
+  namespace :managers do
     resources :products
-    resources :customers
+    resources :customers, only: [:index, :show, :edit, :update]
     resources :orders
   end
-  
+
   devise_for :customers
   root :to => "homes#top"
   get "homes/about" => "homes#about"
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :products, only: [:index, :show, :edit, :create, :new, :update]
+  resources :products, only: [:index, :show]
   resources :cart_item, only: [:index, :create, :update, :destroy]
 
 end
