@@ -1,0 +1,24 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-3" id="product-img">
+      <%= attachment_image_tag(@product, :image, size: "200x200", fallback: "no_image.jpg") %>
+    </div>
+    <div class="col-5" id="product-detail">
+      <h4><%= @product.name %></h4>
+      <div id="product-detail">
+        <%= @product.detail %>
+      </div>
+      <h5 id="price-detail">
+        ¥ <%= (@product.price * 1.1).to_i.to_s(:delimited) %><span id="tax-in-price">  (税込)</span>
+      </h5>
+      <%= form_with model: @cart_items, url: public_item_cart_items_path(@product.id) do |f| %>
+        <%= f.select :count, options_for_select((1..10).to_a), include_blank: "個数選択" %>
+        <%= f.submit "カートに入れる", class: " btn btn-primary" %>
+      <% end %>
+    </div>
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>
