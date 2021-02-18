@@ -71,13 +71,13 @@
           </tr>
         </thead>
 
-        <% @order_details.each do |d| %>
+        <% @order_products.each do |op| %>
         <tbody>
           <tr class="brown-border">
-            <td><%= d.product_name %></td>
-            <td><%= (d.product_price * 1.1).floor %></td>
-            <td><%= d.quantity %></td>
-            <td><%= ((d.p_price * d.quantity) * 1.1).floor %></td>
+            <td><%= op.product.name %></td>
+            <td><%= op.tax_in_price %></td>
+            <td><%= op.quantity %></td>
+            <td><%= (op.tax_in_price * op.quantity) %></td>
           </tr>
         </tbody>
         <% end %>
