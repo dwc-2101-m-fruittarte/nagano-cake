@@ -10,3 +10,9 @@ Manager.create!(
    email: 'aaa@aaa',
    password: '123456'
 )
+
+Product.create!(
+   name: 'ケーキ',
+   price: '10,000',
+   introduction: 'ケーキです'
+)

@@ -3,19 +3,19 @@
   <div class="row">
     <div class="col-2"></div>
     <div class="col-3" id="product-img">
-      <%= attachment_image_tag(@product, :image, size: "200x200", fallback: "no_image.jpg") %>
+      <%= attachment_image_tag(@product, :image, size: "200x200", fallback: "noimage-1024x898.png") %>
     </div>
     <div class="col-5" id="product-detail">
       <h4><%= @product.name %></h4>
       <div id="product-detail">
-        <%= @product.detail %>
+        <%= @product.introduction %>
       </div>
       <h5 id="price-detail">
         ¥ <%= (@product.price * 1.1).to_i.to_s(:delimited) %><span id="tax-in-price">  (税込)</span>
       </h5>
-      <%= form_with model: @cart_items, url: public_item_cart_items_path(@product.id) do |f| %>
-        <%= f.select :count, options_for_select((1..10).to_a), include_blank: "個数選択" %>
-        <%= f.submit "カートに入れる", class: " btn btn-primary" %>
+      <%= form_with model: @cart_item, url: product_cart_items_path(@product.id), method: :post do |f| %>
+        <%= f.select :quantity, options_for_select((1..10).to_a), include_blank: "個数選択" %>
+          <%= f.submit "カートに入れる", class: " btn btn-primary" %>
       <% end %>
     </div>
     </div>
