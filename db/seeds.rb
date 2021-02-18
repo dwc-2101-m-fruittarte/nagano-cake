@@ -10,3 +10,11 @@ Manager.create!(
    email: 'aaa@aaa',
    password: '123456'
 )
+
+Order.create!(
+   customers_id: "7",
+   name: "りん",
+   bill: "550",
+   shipping: "220",
+   payment_method: "1"
+)

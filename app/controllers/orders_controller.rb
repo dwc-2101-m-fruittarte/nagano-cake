@@ -1,21 +1,25 @@
 class OrdersController < ApplicationController
-  
-  def new
-  end
 
   def index
-  end
-  
-  def info
-  end
-  
-  def create
-  end
-  
-  def thanks
+    @orders = Order.where(customer_id:current_customer)
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
   end
-  
+
+  def new
+    @order = Order.new
+  end
+
+  def create
+  end
+
+  private
+
+   def order_params
+     params.require(:order).permit(:customer_id, :name, :bill, :payment_method )
+   end
+
 end
