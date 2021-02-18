@@ -5,12 +5,12 @@ Rails.application.routes.draw do
     passwords:     'managers/passwords',
     registrations: 'managers/registrations'
   }
-  namespace :manager do
+  namespace :managers do
     resources :products
     resources :customers
     resources :orders
   end
-  
+
   devise_for :customers
   root :to => "homes#top"
   get "homes/about" => "homes#about"
