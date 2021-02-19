@@ -3,5 +3,6 @@ class Product < ApplicationRecord
   has_many :cart_items
 
   attachment :image
+  has_many :cart_items, dependent: :destroy
 
 end

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   }
   namespace :managers do
     resources :products
-    resources :customers
+    resources :customers, only: [:index, :show, :edit, :update]
     resources :orders
   end
 
@@ -18,15 +18,18 @@ Rails.application.routes.draw do
   resources :customers, only: [:show, :edit, :update, :destroy] do
     patch "/customers" => "customers#withdraw"
   end
-  
-  resources :orders, only: [:new, :create, :index, :show] do
-    collection do
-      post 'info'
-      get 'thanks'
-    end
-  end
 
-  resources :products, only: [:index, :show, :edit, :create, :new, :update]
-  resources :cart_item, only: [:index, :create, :update, :destroy]
+    resources :orders, only: [:new, :create, :index, :show] do
+      collection do
+        post 'info'
+        get 'thanks'
+      end
+    end
+
+  resources :products, only: [:index, :show] do
+    resources :cart_items, only: [:create]
+  end
+   resources :cart_items, only: [:index, :update, :destroy]
+  delete '/cart_items' => 'cart_items#destroy_all'
 
 end

@@ -18,11 +18,14 @@
 #     image: File.open('./app/assets/images/noimage-1024x898.png')
 #     )
 
-Cart_item.create!(
-   customer_id: 14,
-   product_id
-   name: "c",
-   bill: "560",
-   shipping: "800",
-   payment_method: "0"
+
+Manager.create!(
+   email: 'aaa@aaa',
+   password: '123456'
+)
+
+Product.create!(
+   name: 'ケーキ',
+   price: '10,000',
+   introduction: 'ケーキです'
 )
