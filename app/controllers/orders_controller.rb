@@ -1,11 +1,9 @@
 class OrdersController < ApplicationController
 
   def index
-    # @orders = Order.where(customer_id: current_customer.id)
-    
-    # 本来はログインしている会員のorderだけを取得する
-    # ので後々以下は削除
-    @orders = Order.all
+    @orders = Order.where(customer_id: current_customer.id)
+    # # 本来はログインしている会員のorderだけを取得するので後々@orders = Order.allは削除
+    # @orders = Order.all
   end
 
   def show
