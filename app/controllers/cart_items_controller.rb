@@ -5,7 +5,7 @@ class CartItemsController < ApplicationController
    @tax = 1.1
    @total_price = 0
    @cart_items.each do |cart_item|
-     @total_price += cart_item.product.price * cart_item.quantity
+    @total_price += cart_item.product.price * cart_item.quantity
    end
   end
 
