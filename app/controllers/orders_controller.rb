@@ -8,13 +8,18 @@ class OrdersController < ApplicationController
   end
   
   def info
+    @orders = current_customer.orders
+    
   end
   
   def create
-    @item = Item.find(params[:item_id])
+    @product = Product.find(params[:product_id])
     @order = @product.order.new(order_params)
-    @order.save
-    redirect_to thanks_customer_orders_path
+    if @order.save
+      redirect_to thanks_orders_path
+    else
+      render :info
+    end
   end
   
   def thanks

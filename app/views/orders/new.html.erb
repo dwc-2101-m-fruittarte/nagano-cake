@@ -2,3 +2,7 @@
 <p>注文情報の入力</p>
 <p>支払い方法</p>
 
+<%= form_with(model: @order, local: true) do |f| %>
+<label><%=f.radio_button payment_method, 0 %>クレジットカード</label>
+<label><%=f.radio_button payment_method, 1 %>銀行振込</label>
+<%end%>
