@@ -8,8 +8,13 @@ class OrdersController < ApplicationController
   end
 
   def info
-    @orders = current_customer.orders
-    
+   @order = Order.new
+   @cart_items = current_customer.cart_items
+   @tax = 1.1
+   @total_price = 0
+   @cart_items.each do |cart_item|
+     @total_price += cart_item.product.price * cart_item.quantity
+   end
   end
 
   def create
@@ -26,5 +31,8 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_products = @order.order_products
   end
 
+end
