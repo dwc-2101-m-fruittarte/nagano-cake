@@ -17,14 +17,19 @@ Rails.application.routes.draw do
 
   resources :customers, only: [:show, :edit, :update, :destroy] do
     patch "/customers" => "customers#withdraw"
+  end
+
     resources :orders, only: [:new, :create, :index, :show] do
       collection do
         post 'info'
         get 'thanks'
       end
     end
+
+  resources :products, only: [:index, :show] do
+    resources :cart_items, only: [:create]
   end
-  resources :products, only: [:index, :show]
-  resources :cart_item, only: [:index, :create, :update, :destroy]
+   resources :cart_items, only: [:index, :update, :destroy]
+  delete '/cart_items' => 'cart_items#destroy_all'
 
 end
