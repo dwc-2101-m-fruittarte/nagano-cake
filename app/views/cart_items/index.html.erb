@@ -1,3 +1,4 @@
+ <%= link_to "カートを空にする", cart_items_path, method: :delete, class: "btn btn-sm btn-danger" %>
  <% @cart_items.each do |cart_item| %>
     <tbody>
       <tr>
@@ -12,6 +13,11 @@
            <td>
               合計金額<%= (cart_item.product.price * 1.1).floor * cart_item.quantity %>円
             </td>
+            <td><%= form_with model:cart_item, local:true do |f| %>
+                  <%= f.number_field :quantity, min:1,class: "col-6" %>
+                  <%= f.submit "変更", class: "btn btn-sm btn-outline-danger offset-1 col-4" %>
+                <% end %>
+                </td>
             <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-sm btn-danger" %></td>
           </tr>
         </tbody>
