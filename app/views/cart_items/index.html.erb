@@ -6,11 +6,11 @@
         <span><%= cart_item.product.name %></span>
         </td>
         <td>
-          <%= cart_item.quantity %>
+          <%= cart_item.quantity %>個
           </td>
-         <td><%= (cart_item.product.price * 1.1).floor %></td>
+         <td>単価<%= (cart_item.product.price * 1.1).floor %>円</td>
            <td>
-              <%= (cart_item.product.price * 1.1).floor * cart_item.quantity %>
+              合計金額<%= (cart_item.product.price * 1.1).floor * cart_item.quantity %>円
             </td>
             <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-sm btn-danger" %></td>
           </tr>
