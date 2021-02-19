@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   }
   namespace :managers do
     resources :products
-    resources :customers
+    resources :customers, only: [:index, :show, :edit, :update]
     resources :orders
   end
 
@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       end
     end
   end
+  
   resources :products, only: [:index, :show, :edit, :create, :new, :update] do
     resources :cart_items, only: [:create]
   end
