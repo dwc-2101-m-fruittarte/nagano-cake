@@ -1,8 +1,7 @@
 <p>注文情報の入力</p>
 <p>支払い方法</p>
 <%= form_with model: @order, url: info_orders_path, method: :post,local: true do |f| %>
-<label><%=f.radio_button :payment_method, 0 %>クレジットカード</label><br>
-<label><%=f.radio_button :payment_method, 1 %>銀行振込</label><br>
+<label><%=f.select :payment_method, Order.payment_methods.keys %></label><br>
 
  <%= f.submit "確認画面へ進む", class: " btn btn-primary" %>
 <% end %>
