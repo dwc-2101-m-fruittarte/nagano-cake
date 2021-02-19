@@ -9,7 +9,8 @@ class OrdersController < ApplicationController
 
   def info
     @orders = current_customer.orders
-    
+    @order = Order.new
+    @cart_items = current_customer.cart_items
   end
 
   def create
@@ -26,5 +27,14 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_products = @order.order_products
   end
 
+  private
+
+   def order_params
+     params.require(:orders).permit(:customer_id, :name, :bill, :shipping, :payment_method ).merge(product_id: current_customer.id)
+   end
+
+end

@@ -1,7 +1,26 @@
-<p>注文情報の入力</p>
-<p>支払い方法</p>
+<div class="container my-5">
+  <div class="row">
+    <div class="offset-1">
+      <h2 class="red-border px-3">注文情報入力</h2>
+    </div>
+  </div>
 
-<%= form_with(model: @order, local: true) do |f| %>
-<label><%=f.radio_button :payment_method, 0 %>クレジットカード</label><br>
-<label><%=f.radio_button :payment_method, 1 %>銀行振込</label>
-<%end%>
+  <div class="row mt-5">
+    <div class="offset-2 col-5">
+
+      <div class="row">
+        <strong class="red-border px-3">支払方法</strong>
+      </div>
+
+      <%= form_with(model: @order, url: info_orders_path, method: :post, local: true) do |f| %>
+        <div class="form-check mt-3">
+          <label><%=f.radio_button :payment_method, 0 %>クレジットカード</label><br>
+          <label><%=f.radio_button :payment_method, 1 %>銀行振込</label>
+        </div>
+        <div class="row mt-5">
+          <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
