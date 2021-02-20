@@ -2,6 +2,6 @@
 <p>支払い方法</p>
 <%= form_with model: @order, url: info_orders_path, method: :post,local: true do |f| %>
 <label><%=f.select :payment_method, Order.payment_methods.keys %></label><br>
-
+<%= f.hidden_field :shipping, :value => @shipping %>
  <%= f.submit "確認画面へ進む", class: " btn btn-primary" %>
 <% end %>

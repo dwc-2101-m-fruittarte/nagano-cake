@@ -2,6 +2,13 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @tax = 1.1
+    @total_price = 0
+    @cart_items = current_customer.cart_items
+    @cart_items.each do |cart_item|
+    @total_price += cart_item.product.price * cart_item.quantity
+   end
+    @shipping = @tax * @total_price
   end
 
   def index
@@ -9,17 +16,19 @@ class OrdersController < ApplicationController
 
   def info
    @order = Order.new(order_params)
-   @cart_items = current_customer.cart_items
    @tax = 1.1
-   @total_price = 0
-   @cart_items.each do |cart_item|
-     @total_price += cart_item.product.price * cart_item.quantity
+    @total_price = 0
+    @cart_items = current_customer.cart_items
+    @cart_items.each do |cart_item|
+    @total_price += cart_item.product.price * cart_item.quantity
    end
+   session[:order] = order_params
   end
 
   def create
-    @order =Order.new(order_params)
+    @order = current_customer.orders.new(session[:order])
     if @order.save
+      session.delete(:order)
       redirect_to thanks_orders_path
     else
       render :info
@@ -36,8 +45,11 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order)
-    .permit(:payment_method)
+    params.require(:order).permit(:customer_id, :bill, :shipping, :payment_method)
   end
+  
+  # def find_cart
+  #   cart_item = Cart.find_by(id: session[:cart_id])
+  # end
 
 end
