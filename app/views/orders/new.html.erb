@@ -5,7 +5,7 @@
       <p>支払い方法</p>
       <%= form_with model: @order, url: info_orders_path, method: :post,local: true do |f| %>
       <%=f.select :payment_method, Order.payment_methods.keys %></label><br>
-      <%= f.submit "確認画面へ進む", class: " btn btn-primary" %>
+      <%= f.submit "確認画面へ進む", class: " btn btn-primary mt-2" %>
       <% end %>
     </div>
   </div>

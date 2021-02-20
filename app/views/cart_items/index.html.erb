@@ -24,7 +24,7 @@
        <!--個数選択プルダウン-->
        <td>
        <%= form_with model:cart_item, local:true do |f| %>
-         <%= f.number_field :quantity, min:1,class: "col-6" %>
+         <%= f.number_field :quantity, min:1, class: "col-6" %>
          <%= f.submit "変更", class: "btn btn-sm btn-outline-danger offset-1 col-4" %>
        <% end %>
        </td>

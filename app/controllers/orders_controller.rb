@@ -16,12 +16,19 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order =Order.new(order_params)
+    @order =Order.new(session[:order])
+    session[:order] = nil
     if @order.save
-      redirect_to thanks_orders_path
-    else
-      render :info
+      @cart_items = current_customer.cart_items
+      @cart_items.each do |cart_item|
+        order_product = @order.order_product.new
+        order_product.product_id = cart_item.product.id
+        order_product.quantity = cart_item.quantity
+        order_product.save
+
+      end
     end
+    redirect_to thanks_orders_path
   end
 
   def thanks
@@ -38,8 +45,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order)
-    .permit(:payment_method)
+    params.require(:order).permit(:payment_method)
   end
 
 end
