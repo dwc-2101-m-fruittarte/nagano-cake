@@ -27,10 +27,11 @@ class OrdersController < ApplicationController
           quantity: cart_item.quantity,
           tax_in_price: cart_item.product.price * 1.1,
           order_id: @order.id)
-    session[:product_id] = params[:product_id]
-    session[:quantity] = params[:quantity]
-    session[:tax_in_price] = params[:tax_in_price]
-    session[:order_id] = params[:order_id]
+    # session[:product_id] = params[:product_id]
+    # session[:quantity] = params[:quantity]
+    # session[:tax_in_price] = params[:tax_in_price]
+    # session[:order_id] = params[:order_id]
+    @order_products.save
     end
     current_customer.cart_items.destroy_all
     redirect_to thanks_orders_path
