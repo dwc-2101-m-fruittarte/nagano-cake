@@ -10,20 +10,17 @@
                 <th>小計</th>
             </tr>
         </thead>
+        <% @cart_items.each do |cart_item| %>
         <tbody>
             <tr>
-                <td>1</td>
+                <td><%= attachment_image_tag cart_item.product, :image, size: "50x50", fallback: "noimage-1024x898.png" %>
+       <span><%= cart_item.product.name %></span></td>
+                <td><%= (cart_item.product.price * 1.1).floor %>円</td>
                 <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><%= (cart_item.product.price * 1.1).floor * cart_item.quantity %>円</td>
             </tr>
         </tbody>
+        <% end %>
     </table>
 </div>
 <div class="col-3 ml-3">
@@ -43,3 +40,8 @@
 </div>
    
 <p>支払い方法</p>
+
+
+<%= form_with model: @order, url: orders_path, method: :post do |f| %>
+<%= f.submit "注文を確定する", class: " btn btn-primary" %>
+<% end %>
