@@ -1,6 +1,6 @@
 class Managers::ProductsController < ApplicationController
 
-  # before_action :authenticate_manager!
+  before_action :authenticate_manager!
   # before_action :ensure_current_user, only[:edit, :update]
   # before_action :set_product, only[:new, :create, :edit, :update]
 
@@ -21,11 +21,9 @@ class Managers::ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      # redirect_to manager_products_path
-      redirect_to products_path
+      redirect_to manager_products_path
     else
-      # redirect_to new_manager_product_path
-      render :index
+      redirect_to new_manager_product_path
     end
   end
 
@@ -36,11 +34,9 @@ class Managers::ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-      # redirect_to manager_product_path(@product)
-      redirect_to products_path
+      redirect_to manager_product_path(@product)
     else
-      # redirect_to edit_manager_product_path(@product)
-      render :edit
+      redirect_to edit_manager_product_path(@product)
     end
   end
 
