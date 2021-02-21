@@ -2,21 +2,19 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @order.bill = current_customer.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + 800
   end
 
   def index
+     @orders = current_customer.orders
   end
 
   def info
    @order = current_customer.orders.new(order_params)
    session[:order_params] = order_params
    @cart_items = current_customer.cart_items
-   @tax = 1.1
-   @total_price = 0
-   @cart_items.each do |cart_item|
-     @total_price += cart_item.product.price * cart_item.quantity
-   end
   end
+
 
   def create
     @order = current_customer.orders.build(session[:order_params])
@@ -47,7 +45,7 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:payment_method)
+    params.require(:order).permit(:payment_method, :bill)
   end
 
 end

@@ -15,7 +15,7 @@
                 <td><%= cart_item.product.name %></td>
                 <td><%= (cart_item.product.price * 1.1).floor %>円</td>
                 <td><%= cart_item.quantity %></td>
-                <td><%= (cart_item.product.price * 1.1).floor * cart_item.quantity %>円</td>
+                <td><%= cart_item.subtotal_price %>円</td>
             </tr>
         </tbody>
     </table>
@@ -28,11 +28,11 @@
       </tr>
 
       <tr>
-        <th>商品合計</th><td><%= (@total_price * @tax ).to_i.to_s(:delimited, delimiter: ',') %>円</td>
+        <th>商品合計</th><td><%= @order.bill - 800 %>円</td>
       </tr>
 
       <tr>
-        <th>請求額</th><td><%= (@total_price * @tax + 800).to_i.to_s(:delimited, delimiter: ',') %>円</td>
+        <th>請求額</th><td><%= @order.bill %>円</td>
       </tr>
   </table>
 </div>
@@ -41,6 +41,7 @@
 <%= @order.payment_method %>
 
 <%= form_with model: @order, url: orders_path, method: :post,local: true do |f| %>
+  <%= f.hidden_field :bill, :value => @order.bill %>
   <%= f.submit "注文を確定する", class: " btn btn-primary" %>
 <% end %>
 
