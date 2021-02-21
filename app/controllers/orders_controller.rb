@@ -4,9 +4,6 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
-  def index
-  end
-
   def info
    @order = current_customer.orders.new(order_params)
    session[:order_params] = order_params
@@ -40,9 +37,13 @@ class OrdersController < ApplicationController
   def thanks
   end
 
+  def index
+    @orders = Order.where(customer_id: current_customer)
+    @order = Order.new
+  end
+
   def show
-    @order = Order.find(params[:id])
-    @order_products = @order.order_products
+ 
   end
 
   private

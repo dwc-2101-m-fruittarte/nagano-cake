@@ -17,17 +17,17 @@
           <tbody>
             <tr class="brown-border">
               <td>注文日</td>
-              <td><%= @order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+              <td></td>
             </tr>
 
             <tr class="brown-border">
               <td>名前</td>
-              <td><%= @order.name %></td>
+              <td></td>
             </tr>
 
             <tr class="brown-border">
               <td>支払方法</td>
-              <td><%= @order.payment_method %></td>
+              <td></td>
             </tr>
 
           </tbody>
@@ -43,7 +43,7 @@
 
             <tr class="brown-border">
               <td>ご請求額</td>
-              <td><%= @order.bill %></td>
+              <td>></td>
             </tr>
           </tbody>
         </table>
@@ -71,21 +71,17 @@
           </tr>
         </thead>
 
-        <% @order_products.each do |op| %>
+       
         <tbody>
           <tr class="brown-border">
-            <td><%= op.product.name %></td>
-            <td><%= op.tax_in_price %></td>
-            <td><%= op.quantity %></td>
-            <td><%= (op.tax_in_price * op.quantity) %></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
         </tbody>
-        <% end %>
+      
       </table>
-
     </div>
   </div>
-
 </div>
-
-
