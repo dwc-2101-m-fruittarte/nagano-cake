@@ -5,6 +5,12 @@ class OrdersController < ApplicationController
   end
 
   def index
+    @order_products = OrderProduct.all
+    @tax = 1.1
+  # @total_price = 0
+    @order_products.each do |op|
+    @total_price = op.product.price * op.quantity + 800
+   end
   end
 
   def info
