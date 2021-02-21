@@ -1,9 +1,9 @@
-<div class=“container my-5”>
-  <div class=“row”>
+<div class="container my-5">
+  <div class="row">
     <h2>注文履歴一覧画面</h2>
   </div>
-  <div class=“row mt-5”>
-    <table class=“table table-hover”>
+  <div class="row mt-5">
+    <table class="table table-hover">
       <thead>
         <tr>
           <th>購入日時</th>
@@ -14,7 +14,7 @@
       <tbody>
         <% @orders.each do |order| %>
           <tr>
-            <td><%= link_to order.created_at.strftime("%Y-%m-%d %H:%M"), managers_orders_path(order) %></td>
+            <td><%= link_to order.created_at.strftime("%Y-%m-%d %H:%M"), managers_order_path(order) %></td>
             <td><%= order.customer.family_name %>
                 <%= order.customer.first_name %>
             </td>

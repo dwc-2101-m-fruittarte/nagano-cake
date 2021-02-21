@@ -1,4 +1,7 @@
 class Managers::OrdersController < ApplicationController
+  
+  before_action :authenticate_manager!
+
   def index
     if params[:id] # 会員詳細から
       @orders = Customer.find(params[:id]).orders
@@ -13,16 +16,22 @@ class Managers::OrdersController < ApplicationController
   end
   
   def show
-    # @product = Product.find(params[:id])
-    # @customer = Customer.find(params[:id])
     @order = Order.find(params[:id])
     @customer = @order.customer
     @order_product = @order.order_products
-  #   @cart_items = current_customer.cart_items
-  # @tax = 1.1
-  # @total_price = 0
-  # @cart_items.each do |cart_item|
-  #   @total_price += cart_item.product.price * cart_item.quantity
-  # end
+  end
+  
+  def calculate(products_total_price)
+    @products_total_price = 0
+    @order_products.each {|order_product|
+    tax_in_price = (order_product.product_price * 1.1).floor
+    sub_total_price = tax_in_price * order_product.quantity
+    @products_total_price += sub_total_price
+    }
+    return @products_total_price
+  end
+  private
+  def order_product_params
+    params.require(:order_product).permit(:quantity)
   end
 end
