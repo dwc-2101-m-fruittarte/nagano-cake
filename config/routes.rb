@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'customers/show'
+  get 'customers/edit'
+  get 'customers/update'
   devise_for :managers, controllers: {
     sessions:      'managers/sessions',
     passwords:     'managers/passwords',
@@ -15,7 +18,8 @@ Rails.application.routes.draw do
   root :to => "homes#top"
   get "homes/about" => "homes#about"
 
-  resources :customers, only: [:show, :edit, :update, :destroy] do
+  resources :customers, only: [:show, :edit, :update] do
+    get "/customers" => "customers#confirm"
     patch "/customers" => "customers#withdraw"
   end
 
