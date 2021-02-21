@@ -6,12 +6,12 @@ class Order < ApplicationRecord
   enum payment_method: {クレジットカード:0, 銀行振込:1}
 
 
-   def total_price
-		total = 0
-		order_products.each do |order_product|
-			total += order_product.subtotal_price
-		end
-		total + 800
-	end
+  def total_price
+  	total = 0
+  	order_products.each do |order_product|
+    total += order_product.subtotal_price
+  	end
+  	total + 800
+  end
 
 end

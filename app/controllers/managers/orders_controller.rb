@@ -1,5 +1,5 @@
 class Managers::OrdersController < ApplicationController
-  
+
   before_action :authenticate_manager!
 
   def index
@@ -14,13 +14,15 @@ class Managers::OrdersController < ApplicationController
       @orders = Order.all
     end
   end
-  
+
   def show
+    session[:order_params] = order_params
+    @order.bill = current_customer.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + 800
     @order = Order.find(params[:id])
     @customer = @order.customer
     @order_product = @order.order_products
   end
-  
+
   def calculate(products_total_price)
     @products_total_price = 0
     @order_products.each {|order_product|
@@ -30,7 +32,13 @@ class Managers::OrdersController < ApplicationController
     }
     return @products_total_price
   end
+
   private
+
+  def order_params
+    params.require(:order).permit(:payment_method, :bill)
+  end
+
   def order_product_params
     params.require(:order_product).permit(:quantity)
   end
