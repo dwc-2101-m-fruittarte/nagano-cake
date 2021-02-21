@@ -3,7 +3,7 @@
     <h2>商品 新規登録画面</h2>
   </div>
 
-  <%= form_with model: @product, local:true do |f| %>
+  <%= form_with model: @product, url: managers_products_path, method: :post, local:true do |f| %>
 
     <div class="row mt-5">
       <div class="col-sm-4">

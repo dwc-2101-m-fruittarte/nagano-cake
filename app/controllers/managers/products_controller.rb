@@ -21,8 +21,8 @@ class Managers::ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      # redirect_to manager_products_path
-      redirect_to products_path
+      redirect_to managers_product_path(@product)
+      # redirect_to products_path
     else
       # redirect_to new_manager_product_path
       render :index
@@ -36,10 +36,8 @@ class Managers::ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-      # redirect_to manager_product_path(@product)
-      redirect_to products_path
+      redirect_to managers_product_path(@product)
     else
-      # redirect_to edit_manager_product_path(@product)
       render :edit
     end
   end
