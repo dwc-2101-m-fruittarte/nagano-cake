@@ -8,7 +8,8 @@ class OrdersController < ApplicationController
   end
 
   def info
-   @order = Order.new(order_params)
+   @order = current_customer.orders.new(order_params)
+   session[:order_params] = order_params
    @cart_items = current_customer.cart_items
    @tax = 1.1
    @total_price = 0
@@ -18,12 +19,22 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order =Order.new(order_params)
-    if @order.save
-      redirect_to thanks_orders_path
-    else
-      render :info
+    @order = current_customer.orders.build(session[:order_params])
+    @order.save
+    current_customer.cart_items.each do |cart_item|
+    @order_products = OrderProduct.new(
+          product_id: cart_item.product.id,
+          quantity: cart_item.quantity,
+          tax_in_price: cart_item.product.price * 1.1,
+          order_id: @order.id)
+    # session[:product_id] = params[:product_id]
+    # session[:quantity] = params[:quantity]
+    # session[:tax_in_price] = params[:tax_in_price]
+    # session[:order_id] = params[:order_id]
+    @order_products.save
     end
+    current_customer.cart_items.destroy_all
+    redirect_to thanks_orders_path
   end
 
   def thanks
@@ -36,8 +47,7 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order)
-    .permit(:payment_method)
+    params.require(:order).permit(:payment_method)
   end
 
 end
