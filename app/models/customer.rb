@@ -6,6 +6,7 @@ class Customer < ApplicationRecord
 
   has_many :cart_items, dependent: :destroy
   has_many :orders
+  has_many :deliveries, dependent: :destroy
 
   def cart_item_sum
     total = 0

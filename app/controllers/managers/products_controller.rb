@@ -1,6 +1,6 @@
 class Managers::ProductsController < ApplicationController
 
-  # before_action :authenticate_manager!
+  before_action :authenticate_manager!
   # before_action :ensure_current_user, only[:edit, :update]
   # before_action :set_product, only[:new, :create, :edit, :update]
 

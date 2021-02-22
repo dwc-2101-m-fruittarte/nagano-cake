@@ -35,3 +35,7 @@ class Managers::OrdersController < ApplicationController
     params.require(:order_product).permit(:quantity)
   end
 end
+
+
+
+
