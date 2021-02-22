@@ -4,20 +4,20 @@
     <div>
       <table class="table table-borderless">
         <tr>
-          <th class="col-6">購入者</th>
-          <td class="col-6">
+          <th>購入者</th>
+          <td>
           <%= link_to managers_customer_path(@customer.id) do %>
-          <%= @customer.family_name %><%= @customer.first_name %><%= @customer.family_name %><%= @customer.first_name_kana %>
+          <%= @customer.family_name %><%= @customer.first_name %>
           <% end %>
           </td>
         </tr>
         <tr>
-          <th class="col-6">注文日</th>
-          <td class="col-9"><%= @order.created_at.strftime("%Y/%m/%d") %></td>
+          <th>注文日</th>
+          <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
         </tr>
         <tr>
-          <th class="col-6">支払方法</th>
-          <td class="col-12"><%= @order.payment_method %></td>
+          <th>支払方法</th>
+          <td><%= @order.payment_method %></td>
         </tr>
       </table>
     </div>
@@ -25,7 +25,7 @@
 </div>
 
 
-
+  <div class="row mt-3">
 <div class="col-7 ml-3">
     <table class="table table-bordered">
         <thead>
@@ -49,3 +49,21 @@
         </tbody>
     </table>
   </div>
+
+
+    <div class="col-2">
+      <table class="table table-borderless">
+        <tr>
+          <th>商品合計</th><td><%= (@order.bill - 800).to_s(:delimited) %>円</td>
+        </tr>
+        <tr>
+          <th>送料</th><td>800円</td>
+        </tr>
+        <tr>
+          <th>請求金額合計</th><td><%= @order.bill.to_s(:delimited) %>円</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+

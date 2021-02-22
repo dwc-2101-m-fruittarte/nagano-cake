@@ -19,6 +19,7 @@ class Managers::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @customer = @order.customer
     @order_product = @order.order_products
+    @order_products = @order.order_products
   end
   
   def calculate(products_total_price)

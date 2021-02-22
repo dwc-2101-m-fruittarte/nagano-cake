@@ -12,6 +12,6 @@ class Order < ApplicationRecord
 			total += order_product.subtotal_price
 		end
 		total + 800
-	end
+   end
 
 end
