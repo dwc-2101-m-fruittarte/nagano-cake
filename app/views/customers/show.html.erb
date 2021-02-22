@@ -3,17 +3,17 @@
 		<div class="col-xs-offset-1 col-xs-8">
 			<h2 class="head-line text-center title_h2">マイページ</h2>
 			<p><strong class="information-link"><i class="far fa-user"></i>登録情報</strong>
-				<%= link_to " 編集する", edit_customer_registration_path, class: "btn btn-success" %>
+				<%= link_to " 編集する", edit_customer_registration_path, method: :get, class: "btn btn-success" %>
 			</p>
 				<table class="table table-borderless" >
 					<tbody>
 						<tr>
 							<td>氏名</td>
-							<td><%= current_customer.family_name %><%= current_customer.first_name %></td>
+							<td><%= current_customer.family_name %> <%= current_customer.first_name %></td>
 						</tr>
 						<tr>
 							<td>カナ</td>
-							<td><%= current_customer.family_name_kana %><%= current_customer.first_name_kana%></td>
+							<td><%= current_customer.family_name_kana %> <%= current_customer.first_name_kana%></td>
 						</tr>
 						<tr>
 							<td>郵便番号</td>
@@ -34,11 +34,8 @@
 					</tbody>
 				</table>
 				<div class="mypage-bottoms">
-					<P><strong class="shipping-link">配送先</strong>
-						<%= link_to " 一覧を見る", class: " btn " %>
-					</p>
 					<p><strong class="order-link">注文履歴</strong>
-	      	<%= link_to "一覧を見る", orders_path, class: "btn btn-sm btn-primary ml-3" %></p>
+	      	<%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %></p>
 				</div>
 		</div>
 	</div>

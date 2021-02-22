@@ -45,7 +45,7 @@
       <tbody>
         <tr>
           <td class="table-secondary font-weight-bold">合計金額</td>
-          <td><%= (@total_price * @tax).to_i.to_s(:delimited, delimiter: ',')%></td>
+          <td><%= (@customer.cart_item_sum).to_i.to_s(:delimited, delimiter: ',')%>円</td>
         </tr>
       </tbody>
     </table>
