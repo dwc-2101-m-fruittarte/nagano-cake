@@ -45,7 +45,7 @@ class Managers::ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :introduction, :price, :image )
+    params.require(:product).permit(:name, :introduction, :price, :image ,:is_active)
   end
 
   def ensure_current_user

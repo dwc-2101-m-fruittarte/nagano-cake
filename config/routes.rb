@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :products
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders
+    patch '/orders/:id/order_status' => 'orders#order_status_update', as: "order_status"
+    patch '/orders/:id/make_status' => 'orders#make_status_update', as: "item_status" # 製作ステータスupdate
   end
 
   devise_for :customers
