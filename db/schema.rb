@@ -10,14 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_16_070608) do
+ActiveRecord::Schema.define(version: 2021_02_22_124544) do
 
   create_table "cart_items", force: :cascade do |t|
-    t.integer "customers_id"
+    t.integer "customer_id"
     t.integer "product_id"
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "family_name"
+    t.string "first_name"
+    t.string "family_name_kana"
+    t.string "first_name_kana"
+    t.string "postcode"
+    t.string "address"
+    t.string "phone_number"
+    t.boolean "is_deleted", default: true
+    t.index ["email"], name: "index_customers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
   create_table "deliveries", force: :cascade do |t|
@@ -46,7 +66,7 @@ ActiveRecord::Schema.define(version: 2021_02_16_070608) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "customers_id"
+    t.integer "customer_id"
     t.string "name"
     t.string "postcode"
     t.string "address"
@@ -64,7 +84,7 @@ ActiveRecord::Schema.define(version: 2021_02_16_070608) do
     t.text "introduction"
     t.integer "price"
     t.string "image_id"
-    t.boolean "is_active"
+    t.integer "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

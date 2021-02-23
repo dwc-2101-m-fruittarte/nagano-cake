@@ -1,0 +1,42 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-offset-1 col-xs-8">
+			<h2 class="head-line text-center title_h2">マイページ</h2>
+			<p><strong class="information-link"><i class="far fa-user"></i>登録情報</strong>
+				<%= link_to " 編集する", edit_customer_registration_path, method: :get, class: "btn btn-success" %>
+			</p>
+				<table class="table table-borderless" >
+					<tbody>
+						<tr>
+							<td>氏名</td>
+							<td><%= current_customer.family_name %> <%= current_customer.first_name %></td>
+						</tr>
+						<tr>
+							<td>カナ</td>
+							<td><%= current_customer.family_name_kana %> <%= current_customer.first_name_kana%></td>
+						</tr>
+						<tr>
+							<td>郵便番号</td>
+							<td><%= current_customer.postcode %></td>
+						</tr>
+						<tr>
+							<td>住所</td>
+							<td><%= current_customer.address %></td>
+						</tr>
+						<tr>
+							<td>電話番号</td>
+							<td><%= current_customer.phone_number %></td>
+						</tr>
+						<tr>
+							<td>メールアドレス</td>
+							<td><%= current_customer.email %></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="mypage-bottoms">
+					<p><strong class="order-link">注文履歴</strong>
+	      	<%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %></p>
+				</div>
+		</div>
+	</div>
+</div>

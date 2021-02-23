@@ -1,2 +1,58 @@
-<h1>CartItems#index</h1>
-<p>Find me in app/views/cart_items/index.html.erb</p>
+<div class='container px-1 px-sm-0'>
+ <div class='row'>
+  <div class='col-md-12'>
+   <h3>ショッピングカート</h3>
+   <%= link_to "カートを空にする", cart_items_path, method: :delete, class: "btn btn-sm btn-danger" %>
+   <table class="table table-hover table-bordered mt-3">
+    <thead>
+     <tr class="cart-items-detail">
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th></th>
+     </tr>
+    </thead>
+     <% @cart_items.each do |cart_item| %>
+     <tbody>
+      <tr>
+       <td>
+       <%= attachment_image_tag cart_item.product, :image, size: "50x50", fallback: "noimage-1024x898.png" %>
+       <span><%= cart_item.product.name %></span>
+       </td>
+       <td><%= (cart_item.product.price * 1.1).floor %>円</td>
+       <!--個数選択プルダウン-->
+       <td>
+       <%= form_with model:cart_item, local:true do |f| %>
+         <%= f.number_field :quantity, min:1,class: "col-6" %>
+         <%= f.submit "変更", class: "btn btn-sm btn-outline-danger offset-1 col-4" %>
+       <% end %>
+       </td>
+       <td><%= (cart_item.product.price * 1.1).floor * cart_item.quantity %>円</td>
+       <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-sm btn-danger" %></td>
+      </tr>
+     </tbody>
+     <% end %>
+   </table>
+  </div>
+ </div>
+ <div class="row">
+    <div class="col-9">
+      <%= link_to "買い物を続ける", root_path, class: "btn btn-sm btn-primary"%>
+    </div>
+  <div class="col-3">
+    <table class="table table-hover table-bordered">
+      <tbody>
+        <tr>
+          <td class="table-secondary font-weight-bold">合計金額</td>
+          <td><%= (@customer.cart_item_sum).to_i.to_s(:delimited, delimiter: ',')%>円</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-3">
+    <%= link_to "情報入力に進む", new_order_path, class: "btn btn-sm btn-success"%>
+  </div>
+</div>
+</div>
+
