@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   root :to => "homes#top"
   get "homes/about" => "homes#about"
 
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   end
    resources :cart_items, only: [:index, :update, :destroy]
   delete '/cart_items' => 'cart_items#destroy_all'
-  
+
     devise_for :managers, controllers: {
     sessions:      'managers/sessions',
     passwords:     'managers/passwords',
