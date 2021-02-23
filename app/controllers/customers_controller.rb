@@ -4,6 +4,7 @@ class CustomersController < ApplicationController
     @customer = current_customer.id
   end
 
+
   def edit
     @customer = current_customer
   end
@@ -17,13 +18,13 @@ class CustomersController < ApplicationController
     end
   end
 
+
   def confirm
-    @customer = current_customer.id
   end
 
   def withdraw
-    @customer = current_customer.id
-    @customer.update(is_deleted: true)
+    current_customer.is_deleted = true
+    current_customer.save
     reset_session
     redirect_to root_path
   end
