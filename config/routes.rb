@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :products
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders
+    resources :deliveries
   end
 
   devise_for :customers
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
 
   resources :customers, only: [:show, :edit, :update] do
     get "/customers" => "customers#confirm"
-    patch "/customers" => "customers#withdraw"
+    patch "/customers/:id/customers" => "customers#withdraw"
   end
 
     resources :orders, only: [:new, :create, :index, :show] do
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
       end
     end
 
+  resources :deliveries
   resources :products, only: [:index, :show] do
     resources :cart_items, only: [:create]
   end
