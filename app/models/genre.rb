@@ -1,5 +1,6 @@
 class Genre < ApplicationRecord
-  
-  # チャレンジ項目
-  
+
+  validates :name, presence: true, uniqueness: true
+  has_many :products, dependent: :destroy
+
 end

@@ -17,4 +17,3 @@ class Customer < ApplicationRecord
  # validates :family_name, :first_name, :family_name_kana, :first_name_kana, :postcode, :address, :phone_number, presence: true
   #validates :is_deleted, inclusion:{in: [true, false]}
 end
-
