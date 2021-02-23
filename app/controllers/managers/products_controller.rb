@@ -8,6 +8,7 @@ class Managers::ProductsController < ApplicationController
     # @products = Product.page(params[:page]).per(10)
     @products = Product.all
     @product = Product.new
+    @products = Product.search(params[:search])
   end
 
   def show
@@ -45,7 +46,7 @@ class Managers::ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :introduction, :price, :image )
+    params.require(:product).permit(:name, :introduction, :price, :image ,:is_active)
   end
 
   def ensure_current_user

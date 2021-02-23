@@ -5,7 +5,7 @@
     退会すると、会員登録情報や<br>
     これまでの購⼊履歴が閲覧できなくなります。<br>
     退会する場合は、「退会する」をクリックしてください。<br>
-    <%= link_to "退会しない", customers_mypage_path, {class: "btn btn-primary mt-2 mr-5"} %>
-    <%= link_to "退会する", customers_withdraw_path, {method: :patch, class: "btn btn-danger mt-2"} %>
+     <%= link_to '退会しない', customer_path(@customer), class: "btn btn-primary" %>
+    <%= link_to '退会する',customer_customers_path(@customer), method: :patch, class: "btn btn-danger" %>
   </div>
 </div>
