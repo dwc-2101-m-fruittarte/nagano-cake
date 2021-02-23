@@ -9,7 +9,11 @@ Rails.application.routes.draw do
     resources :products
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders
-    resources :deliveries
+    patch '/orders/:id/order_status' => 'orders#order_status_update', as: "order_status"
+    patch '/orders/:id/make_status' => 'orders#make_status_update', as: "item_status" # 製作ステータスupdate
+
+#   resources :deliveries
+    
   end
 
   devise_for :customers, contollers: {
