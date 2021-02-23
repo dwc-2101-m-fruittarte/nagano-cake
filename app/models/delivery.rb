@@ -1,5 +1,5 @@
 class Delivery < ApplicationRecord
   
-  # チャレンジ項目
+  belongs_to :customer
   
 end

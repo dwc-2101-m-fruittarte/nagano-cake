@@ -12,7 +12,11 @@ class OrdersController < ApplicationController
   def info
    @order = current_customer.orders.new(order_params)
    session[:order_params] = order_params
+   session[:address] = order_params
    @cart_items = current_customer.cart_items
+   @postcode = current_customer.postcode
+      @address = current_customer.address
+      @name = current_customer.family_name + " " + current_customer.first_name
   end
 
 
@@ -45,7 +49,7 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:payment_method, :bill)
+    params.require(:order).permit(:payment_method, :bill, :address)
   end
 
 end

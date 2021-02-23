@@ -6,6 +6,7 @@ class Customer < ApplicationRecord
 
   has_many :cart_items, dependent: :destroy
   has_many :orders
+  has_many :deliveries
 
   def cart_item_sum
     total = 0
@@ -14,6 +15,16 @@ class Customer < ApplicationRecord
     end
     total
   end
+ # validates :family_name, :first_name, :family_name_kana, :first_name_kana, :postcode, :address, :phone_number, presence: true
+  #validates :is_deleted, inclusion:{in: [true, false]}
+
+  enum is_deleted: {Invalid: true, Available: false}
+    #有効会員はtrue、退会済み会員はfalse
+
+    def active_for_authentication?
+        super && (self.is_deleted === "Invalid")
+    end
+    #is_activeが有効の場合は有効会員(ログイン可能)
 
   validates :family_name, presence: true
   validates :first_name, presence: true
