@@ -1,5 +1,9 @@
 class ProductsController < ApplicationController
+  
+  def new
+  end
 
+<<<<<<< HEAD
   def index
     @products = Product.all
   end
@@ -16,3 +20,21 @@ class ProductsController < ApplicationController
   end
 
 end
+=======
+  def create
+  end
+
+  def index
+  end
+
+  def show
+  end
+
+  def edit
+  end
+
+  def update
+  end
+  
+end
+>>>>>>> develop2
