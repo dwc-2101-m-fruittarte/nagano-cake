@@ -2,7 +2,7 @@
   <div class="row">
     <h2 class="col-4 md-2">商品新規登録</h2>
     <%= form_with model: @product, url: managers_products_path, method: :post, local:true do |f| %>
-      <div class="form-group row">
+      <div class="form-group row mt-5">
         <%= f.label :商品画像, class: "col-sm-4" %>
         <%= f.attachment_field :image, class: "form-control col-sm-7" %>
       </div>
@@ -31,8 +31,10 @@
         <!--販売ステータス-->
       </div>
 
-      <div class="col-sm-4 mt-auto mt-2">
-        <%= f.submit "新規登録" %>
+      <div class="text-content-center">
+        <div class="col-sm-7 mt-auto">
+          <%= f.submit "新規登録" %>
+        </div>
       </div>
     <% end %>
   </div>
