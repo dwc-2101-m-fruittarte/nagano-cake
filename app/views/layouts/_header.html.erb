@@ -8,7 +8,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
-          <li><%= link_to ' マイページ', customers_show_path, class: "btn btn-default" %></li>
+          <li><%= link_to ' マイページ', customers_mypage_path, class: "btn btn-default" %></li>
           <li><%= link_to ' 商品一覧', products_path, class: "btn btn-default" %></li>
           <li><%= link_to ' カート', cart_items_path, class: "btn btn-default" %></li>
           <li><%= link_to ' ログアウト', destroy_customer_session_path, method: :delete, class: "btn btn-info" %></li>
