@@ -29,7 +29,7 @@
           <%= f.label :email %><br />
           <%= f.email_field :email %>
         </div>
-          <%= f.hidden_field :password%>
+          <%= f.hidden_field :password, :value => current_customer.password %>
 
         <div class="actions mt-3">
           <%= f.submit "編集内容を保存", class: "btn btn-success" %>

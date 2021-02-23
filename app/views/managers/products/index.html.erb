@@ -1,5 +1,8 @@
+<div class="container my-5">
 <h2>商品一覧</h2>
+<div class="text-right">
 <%= link_to "商品登録", new_managers_product_path, class: "btn btn-info" %>
+</div>
 <div class="row mt-1">
     <table class="table table-hover text-center">
       <thead>
@@ -7,6 +10,7 @@
           <th>商品ID</th>
           <th>商品名</th>
           <th>税抜価格</th>
+          <th>販売ステータス</th>
         </tr>
       </thead>
 
@@ -18,8 +22,10 @@
               <%= product.name %>
             <% end %></td>
             <td><%= product.price %></td>
+             <td><%= product.is_active %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
+</div>

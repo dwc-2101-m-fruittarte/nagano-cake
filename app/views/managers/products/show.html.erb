@@ -8,7 +8,7 @@
       <%= attachment_image_tag @product, :image, size: "200x200", fallback: "noimage-1024x898.png" %>
     </div>
 
-    <div class="col-sm-4">
+    <div>
       <table class="table table-borderless">
         <tbody>
           <tr>
@@ -24,6 +24,11 @@
           <tr>
             <td>税込価格(税抜価格)</td>
             <td><%= @product.price %>(<%= (@product.price * 1.1).floor %>)円</td>
+          </tr>
+
+          <tr>
+            <td>販売ステータス</td>
+            <td><%= @product.is_active %></td>
           </tr>
         </tbody>
 
