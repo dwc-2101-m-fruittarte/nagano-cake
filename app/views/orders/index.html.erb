@@ -10,6 +10,7 @@
         <thead>
           <tr class="red-border">
             <th>注文日</th>
+            <th>配送先</th>
             <th>注文商品</th>
             <th>支払金額</th>
             <th>注文詳細</th>
@@ -22,7 +23,7 @@
               <td class="align-middle"><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
 
 
-              <% if order.address.length <8 %>
+              <% if order.address %>
               <% delivery = Delivery.find(order.address) %>
               <td class="align-middle">
                 <%= "〒" + deliveries.postcode + "  " + deliveries.address + "  " + deliveries.family_name + deliveries.first_name %>

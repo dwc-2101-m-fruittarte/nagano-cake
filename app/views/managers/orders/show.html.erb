@@ -12,7 +12,7 @@
           </td>
         </tr>
         <tr>
-            <td>配送先</td>
+            <th>配送先</th>
             <% if @order.address %>
             <% delivery = Delivery.find(@order.address) %>
             <td><%= "〒" + delivery.postcode + "  " + delivery.address + "  " + delivery.family_name + delivery.first_name %></td>

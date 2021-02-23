@@ -9,14 +9,16 @@ class Order < ApplicationRecord
   def display_address
     self.postcode + " " + self.address + " " + self.name
   end
+    # def view_postnumber_address_name
+    #     self.postal_nummber.to_s + "　" + self.address + " " + self.name
+    # end
 
-
-   def total_price
+    def total_price
 		total = 0
 		order_products.each do |order_product|
 			total += order_product.subtotal_price
 		end
 		total + 800
-	end
-
+    end
+	
 end

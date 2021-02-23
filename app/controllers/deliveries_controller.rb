@@ -22,8 +22,8 @@ class DeliveriesController < ApplicationController
   end
 
   def update
-    delivery = Delivery.find(params[:id])
-    delivery.update(deliveries_params)
+    @delivery = Delivery.find(params[:id])
+    @delivery.update(deliveries_params)
     redirect_to deliveries_path
   end
 
@@ -36,7 +36,7 @@ class DeliveriesController < ApplicationController
   private
 
   def deliveries_params
-      params.require(:deliveries).permit(:customers_id, :name, :postcode, :address)
+      params.require(:delivery).permit(:customer_id, :name, :postcode, :address)
   end
 
 end

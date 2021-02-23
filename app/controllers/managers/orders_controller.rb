@@ -1,5 +1,5 @@
 class Managers::OrdersController < ApplicationController
-  
+
   before_action :authenticate_manager!
 
   def index
@@ -14,13 +14,13 @@ class Managers::OrdersController < ApplicationController
       @orders = Order.all
     end
   end
-  
+
   def show
     @order = Order.find(params[:id])
     @customer = @order.customer
     @order_product = @order.order_products
   end
-  
+
   def calculate(products_total_price)
     @products_total_price = 0
     @order_products.each {|order_product|
@@ -35,7 +35,3 @@ class Managers::OrdersController < ApplicationController
     params.require(:order_product).permit(:quantity)
   end
 end
-
-
-
-

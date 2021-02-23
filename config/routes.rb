@@ -31,7 +31,9 @@ Rails.application.routes.draw do
       end
     end
 
-  resources :deliveries
+  resources :deliveries, only: [:index, :create, :edit, :update, :destroy] do
+    patch 'deliveries/:id/edit' => 'deliveries#edit'
+  end
   resources :products, only: [:index, :show] do
     resources :cart_items, only: [:create]
   end
