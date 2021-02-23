@@ -25,7 +25,7 @@ class Managers::ProductsController < ApplicationController
       # redirect_to products_path
     else
       # redirect_to new_manager_product_path
-      render :index
+      render :new
     end
   end
 
@@ -45,7 +45,7 @@ class Managers::ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :introduction, :price, :image )
+    params.require(:product).permit(:genre_id, :name, :introduction, :price, :image )
   end
 
   def ensure_current_user
