@@ -14,3 +14,21 @@
  *= require_self
  */
 @import "bootstrap";
+
+
+.footer {
+  min-height: 100vh;
+  position: relative;/*←相対位置*/
+}
+
+.footer-container {
+    /*footerの装飾*/
+    width: 100%;
+    background-color: #89c7de;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    
+    position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
+}

@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     resources :orders
     patch '/orders/:id/order_status' => 'orders#order_status_update', as: "order_status"
     patch '/orders/:id/make_status' => 'orders#make_status_update', as: "item_status" # 製作ステータスupdate
+
+#   resources :deliveries
+    
   end
 
   devise_for :customers, contollers: {
@@ -21,10 +24,16 @@ Rails.application.routes.draw do
   root :to => "homes#top"
   get "homes/about" => "homes#about"
 
+  # resources :customers, only: [:show, :edit, :update] do
+  #   get "/customers" => "customers#confirm"
+  #   patch "/customers/:id/customers" => "customers#withdraw"
+  # end
+
   resource :customers, only: [:edit, :update]
   get "customers/mypage" => "customers#show"
   get "customers/confirm" => "customers#confirm"
   patch "customers/withdraw" => "customers#withdraw"
+
 
     resources :orders, only: [:new, :create, :index, :show] do
       collection do
@@ -33,6 +42,7 @@ Rails.application.routes.draw do
       end
     end
 
+  resources :deliveries
   resources :products, only: [:index, :show] do
     resources :cart_items, only: [:create]
   end
