@@ -8,6 +8,7 @@ class Managers::ProductsController < ApplicationController
     # @products = Product.page(params[:page]).per(10)
     @products = Product.all
     @product = Product.new
+    @products = Product.search(params[:search])
   end
 
   def show
