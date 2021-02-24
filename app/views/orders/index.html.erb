@@ -60,13 +60,13 @@
           <% @orders.each do |order| %>
             <tr class="brown-border">
               <td class="align-middle"><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-              <% if order.address.length <8 %>
-              <% ship_address = Delivery.find(order.address) %>
-              <td class="align-middle">
-                <%= "〒" + deliveries.postcode + "  " + deliveries.address + "  " + deliveries.family_name + deliveries.first_name %>
-              </td>
-              <% else %>
-              <td class="align-middle"><%= order.address %></td>
+               <!--if order.address.length <8 %>-->
+               <!--ship_address = Delivery.find(order.address) %>-->
+              <!--<td class="align-middle">-->
+                 <!--"〒" + deliveries.postcode + "  " + deliveries.address + "  " + deliveries.family_name + deliveries.first_name %>-->
+              <!--</td>-->
+              <!-- else %>-->
+              <!--<td class="align-middle">< order.address %></td>-->
               <% end %>
               <td class="align-middle">
                 <% order.order_products.each do |f| %>
@@ -79,5 +79,5 @@
           <% end %>
         </tbody>
       </table>
-  </div>
+    </div>
 </div>

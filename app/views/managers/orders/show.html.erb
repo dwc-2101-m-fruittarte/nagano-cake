@@ -1,71 +1,3 @@
-<div class="container my-5">
-  <h2>注文履歴詳細</h2>
-  <div class="row">
-    <div>
-      <table class="table table-borderless">
-        <tr>
-          <th>購入者</th>
-          <td>
-          <%= link_to managers_customer_path(@customer.id) do %>
-          <%= @customer.family_name %><%= @customer.first_name %>
-          <% end %>
-          </td>
-        </tr>
-        <tr>
-          <th>注文日</th>
-          <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
-        </tr>
-        <tr>
-          <th>支払方法</th>
-          <td><%= @order.payment_method %></td>
-        </tr>
-      </table>
-    </div>
-  </div>
-</div>
-  <div class="row">
-    <div class="col-1"></div>
-<div class="col-8">
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>商品名</th>
-                <th>単価(税込)</th>
-                <th>数量</th>
-                <th>小計</th>
-            </tr>
-        </thead>
-        <tbody>
-          <% @order.order_products.each do |f| %>
-            <tr>
-                <td><%= f.product.name %></td>
-                <td><%= (f.product.price * 1.1).floor %>円</td>
-                <td><%= f.quantity %></td>
-                <td><%= ((f.product.price * 1.1) * f.quantity).round(0) %>円</td>
-            </tr>
-          <% end %>
-        </tbody>
-    </table>
-  </div>
-    <div class="col-3">
-      <table class="table table-borderless">
-        <tr>
-          <th>商品合計</th><td><%= (@order.bill - 800).to_s(:delimited) %>円</td>
-        </tr>
-        <tr>
-          <th>送料</th><td>800円</td>
-        </tr>
-        <tr>
-          <th>請求金額合計</th><td><%= @order.bill.to_s(:delimited) %>円</td>
-        </tr>
-      </table>
-    </div>
-  </div>
-</div>
-
-
-
-
 <h2>注文履歴詳細</h2>
 <div class="container">
   <div class="row">
@@ -79,15 +11,6 @@
           <% end %>
           </td>
         </tr>
-        <tr>
-            <td>配送先</td>
-            <% if @order.address.length < 8 %>
-            <% delivery = Delivery.find(@order.address) %>
-            <td><%= "〒" + delivery.postcode + "  " + delivery.address + "  " + delivery.family_name + delivery.first_name %></td>
-            <% else %>
-            <td><%= @order.address %></td>
-            <% end %>
-          </tr>
         <tr>
           <th>注文日</th>
           <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
