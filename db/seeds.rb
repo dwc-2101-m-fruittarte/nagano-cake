@@ -29,3 +29,7 @@ Product.create!(
    price: '10,000',
    introduction: 'ケーキです'
 )
+
+Genre.create!(
+   name: 'ショートケーキ'
+)

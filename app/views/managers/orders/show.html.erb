@@ -14,8 +14,8 @@
         <tr>
             <th>配送先</th>
             <% if @order.address %>
-            <% delivery = Delivery.find(@order.address) %>
-            <td><%= "〒" + delivery.postcode + "  " + delivery.address + "  " + delivery.family_name + delivery.first_name %></td>
+            <% delivery = Delivery.find(@order.id) %>
+            <td><%= "〒" + delivery.postcode + "  " + delivery.address + "  " + delivery.customer.family_name + delivery.customer.first_name %></td>
             <% else %>
             <td><%= @order.address %></td>
             <% end %>
