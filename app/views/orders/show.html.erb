@@ -26,6 +26,18 @@
             <!--</tr>-->
 
             <tr class="brown-border">
+              <td>配送先</td>
+              <% if @order.address %>
+              <% delivery = Delivery.find(@order.address) %>
+              <td>
+                <%= "〒" + delivery.postcode + "  " + delivery.address + "  " + delivery.family_name + delivery.first_name %>
+              </td>
+              <% else %>
+              <td><%= @order.address %></td>
+              <% end %>
+            </tr>
+
+            <tr class="brown-border">
               <td>支払方法</td>
               <td><%= @order.payment_method %></td>
             </tr>
