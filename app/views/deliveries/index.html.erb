@@ -1,8 +1,7 @@
 <div class="container mt-2">
 	<h2 class="">配送先登録/一覧</h2>
 	<div class="row">
-	  <>
-    <%= form_with model: delivery, url: deliveries_path do |f| %>
+    <%= form_with model: @delivery, url: deliveries_path, method: :post, local:true do |f| %>
     <div class="form">
       <div class="label"><%= f.label :postcode, "郵便番号（ハイフンなし）" %></div>
       <div class="form-box"><%= f.text_field :postcode, id: "postcode-form" %></div>
@@ -12,11 +11,10 @@
       <div class="form-box"><%= f.text_field :address, id: "address-form" %></div>
     </div>
     <div class="form">
-      <div class="label"><%= f.label :dear, "宛名" %></div>
-      <div class="form-box"><%= f.text_field :dear %></div>
-      <div class="actions"><%= f.submit "新規登録", class: "btn btn-success px-5" %></div>
+      <div class="label"><%= f.label :name, "宛名" %></div>
+      <div class="form-box"><%= f.text_field :name %></div>
+      <div class="actions"><%= f.submit "新規登録", class: "btn btn-success mt-3" %></div>
     </div>
     <% end %>
-    </div>
   </div>
 </div>

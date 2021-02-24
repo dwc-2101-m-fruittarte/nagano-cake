@@ -6,7 +6,7 @@ class Customer < ApplicationRecord
 
   has_many :cart_items, dependent: :destroy
   has_many :orders
-  has_many :deliveries
+  has_many :deliveries, dependent: :destroy
 
   def cart_item_sum
     total = 0
@@ -15,8 +15,6 @@ class Customer < ApplicationRecord
     end
     total
   end
- # validates :family_name, :first_name, :family_name_kana, :first_name_kana, :postcode, :address, :phone_number, presence: true
-  #validates :is_deleted, inclusion:{in: [true, false]}
 
   enum is_deleted: {Invalid: true, Available: false}
     #有効会員はtrue、退会済み会員はfalse
