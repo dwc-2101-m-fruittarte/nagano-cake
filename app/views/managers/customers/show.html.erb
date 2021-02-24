@@ -5,36 +5,36 @@
     <div>
       <table class="table table-borderless">
         <tr>
-          <th class="col-6">顧客ID</th>
-          <td class="col-6"><%= @customer.id %></td>
+          <th>顧客ID</th>
+          <td><%= @customer.id %></td>
         </tr>
         <tr>
-          <th class="col-6">氏名</th>
-          <td class="col-6"><%= @customer.family_name %><%= @customer.first_name %></td>
+          <th>氏名</th>
+          <td><%= @customer.family_name %><%= @customer.first_name %></td>
         </tr>
         <tr>
-          <th class="col-6">フリガナ</th>
-          <td class="col-9"><%= @customer.family_name %><%= @customer.first_name_kana %></td>
+          <th>フリガナ</th>
+          <td><%= @customer.family_name %><%= @customer.first_name_kana %></td>
         </tr>
         <tr>
-          <th class="col-6">郵便番号</th>
-          <td class="col-3"><%= @customer.postcode %></td>
+          <th>郵便番号</th>
+          <td><%= @customer.postcode %></td>
         </tr>
         <tr>
-          <th class="col-6">住所</th>
-          <td class="col-12"><%= @customer.address %></td>
-        </tr>
-        <tr> 
-          <th class="col-6">電話番号</th>
-          <td class="col-12"><%= @customer.phone_number %></td>
+          <th>住所</th>
+          <td><%= @customer.address %></td>
         </tr>
         <tr>
-          <th class="col-6">メールアドレス</th>
-          <td class="col-3"><%= @customer.email %></td>
+          <th>電話番号</th>
+          <td><%= @customer.phone_number %></td>
         </tr>
         <tr>
-          <th class="col-6">会員ステータス</th>
-          <td class="col-3">
+          <th>メールアドレス</th>
+          <td><%= @customer.email %></td>
+        </tr>
+        <tr>
+          <th>会員ステータス</th>
+          <td>
             <% if @customer.is_deleted == true %>
               <p class = "text-secondary">無効</p>
             <% elsif @customer.is_deleted == false %>

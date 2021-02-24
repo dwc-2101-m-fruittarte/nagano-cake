@@ -20,7 +20,8 @@ class Managers::OrdersController < ApplicationController
     @customer = @order.customer
     @order_product = @order.order_products
   end
-
+  
+  #りんさん編集----
   def order_status_update
     @order = Order.find(params[:id])
     @order.update(order_params)
@@ -34,7 +35,8 @@ class Managers::OrdersController < ApplicationController
     order_product.save
     redirect_to managers_order_path(order_product.order_id)
   end
-
+ #------- ここまで
+  
   def calculate(products_total_price)
     @products_total_price = 0
     @order_products.each {|order_product|

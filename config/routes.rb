@@ -12,8 +12,8 @@ Rails.application.routes.draw do
     resources :orders
     patch '/orders/:id/order_status' => 'orders#order_status_update', as: "order_status"
     patch '/orders/:id/make_status' => 'orders#make_status_update', as: "item_status" # 製作ステータスupdate
+    resources :deliveries
 
-  #resources :deliveries,
 
   end
 
@@ -43,7 +43,10 @@ Rails.application.routes.draw do
       end
     end
 
-  resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
+  resources :deliveries, only: [:index, :create, :edit, :update, :destroy] do
+    patch 'deliveries/:id/edit' => 'deliveries#edit'  #追加
+  end
+
   resources :products, only: [:index, :show] do
     resources :cart_items, only: [:create]
   end
