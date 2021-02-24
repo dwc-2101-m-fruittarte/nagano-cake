@@ -5,7 +5,6 @@ class Managers::ProductsController < ApplicationController
   # before_action :set_product, only[:new, :create, :edit, :update]
 
   def index
-    # @products = Product.page(params[:page]).per(10)
     @products = Product.all
     @product = Product.new
     @products = Product.search(params[:search])

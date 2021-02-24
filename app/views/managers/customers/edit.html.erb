@@ -2,7 +2,7 @@
 <h2><%= @customer.family_name %><%= @customer.first_name %>さんの会員情報編集</h2>
   <div class="row">
     <div class="my-5">
-      <%= form_with model:@customer, url:managers_customer_path(@customer),local:true do |f| %>
+      <%= form_with model: @customer, url: managers_customer_path(@customer), local:true do |f| %>
         <table class="table table-borderless">
           <tr class="d-flex">
             <th class ="col-3"><%= f.label :"会員ID" %></th>
