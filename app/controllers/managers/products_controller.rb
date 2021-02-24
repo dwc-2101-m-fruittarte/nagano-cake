@@ -37,7 +37,8 @@ class Managers::ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-      redirect_to managers_product_path(@product)
+      @product.save
+      redirect_to managers_product_path(@product.id)
     else
       render :edit
     end

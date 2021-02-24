@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_02_22_124544) do
   end
 
   create_table "deliveries", force: :cascade do |t|
-    t.integer "customer_id"
+    t.integer "customers_id"
     t.string "name"
     t.string "postcode"
     t.string "address"
