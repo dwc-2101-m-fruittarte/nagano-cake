@@ -82,7 +82,7 @@ class OrdersController < ApplicationController
 
   def delivery_params
     #params.require(:order).permit(:deliveries_id)
-    params.require(:order).permit(:payment_method, :bill, :address)
+    params.require(:order).permit(:payment_method, :bill, :address, :deliveries_id)
   end
 
 end
