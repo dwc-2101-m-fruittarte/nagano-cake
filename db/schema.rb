@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2021_02_22_124544) do
     t.string "postcode"
     t.string "address"
     t.string "phone_number"
-    t.boolean "is_deleted", default: true
+    t.boolean "is_deleted", default: true, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end

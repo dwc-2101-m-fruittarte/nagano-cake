@@ -35,5 +35,5 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource_or_scope)
     return new_manager_session_path if resource_or_scope == :manager
     root_path
-    end
   end
+end

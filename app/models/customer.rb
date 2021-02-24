@@ -32,6 +32,7 @@ class Customer < ApplicationRecord
   validates :address, presence: true
   validates :phone_number, presence: true
   validates :email, presence: true
+  validates :password, presence: true, on: :create
   #validates :password, on: :create
   #validates :is_deleted, inclusion:{in: [true, false]}
 end
