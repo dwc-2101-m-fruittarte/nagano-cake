@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
 
   def info
    @order = current_customer.orders.new(order_params)
+   # rin0222
    @cart_items = current_customer.cart_items
    @address = Delivery.find_by(address: params[:address])
 
@@ -36,6 +37,13 @@ class OrdersController < ApplicationController
     if session[:address].present? && session[:payment_method].present?
       redirect_to orders_info_path
     end
+  #------ここまで
+   session[:order_params] = order_params
+   session[:address] = order_params
+   @cart_items = current_customer.cart_items
+   @postcode = current_customer.postcode
+      @address = current_customer.address
+      @name = current_customer.family_name + " " + current_customer.first_name
   end
 
 
@@ -67,12 +75,14 @@ class OrdersController < ApplicationController
   end
 
   private
+  #りんさん編集
   def order_params
     params.require(:order).permit(:customer_id, :name, :postcode, :address, :shipping, :payment_method, :bill, :status)
   end
-
+　
   def delivery_params
-    params.require(:order).permit(:deliveries_id)
+    #params.require(:order).permit(:deliveries_id)
+    params.require(:order).permit(:payment_method, :bill, :address)
   end
 
 end

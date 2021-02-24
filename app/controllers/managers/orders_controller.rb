@@ -20,7 +20,23 @@ class Managers::OrdersController < ApplicationController
     @customer = @order.customer
     @order_product = @order.order_products
   end
+  
+  #りんさん編集----
+  def order_status_update
+    @order = Order.find(params[:id])
+    @order.update(order_params)
+    @order.save
+    redirect_to managers_order_path(@order)
+  end
 
+  def make_status_update
+    order_product = OrderProduct.find(params[:id])
+    order_product.update(make_status_params)
+    order_product.save
+    redirect_to managers_order_path(order_product.order_id)
+  end
+ #------- ここまで
+  
   def calculate(products_total_price)
     @products_total_price = 0
     @order_products.each {|order_product|
@@ -30,8 +46,17 @@ class Managers::OrdersController < ApplicationController
     }
     return @products_total_price
   end
+
   private
+  def order_params
+    params.require(:order).permit(:status)
+  end
+
   def order_product_params
     params.require(:order_product).permit(:quantity)
+  end
+
+  def make_status_params
+    params.require(:order_product).permit(:make_status)
   end
 end
