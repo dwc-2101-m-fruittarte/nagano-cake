@@ -27,13 +27,12 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :税抜価格, class: "col-sm-6" %>
-      <%= f.text_field :price, class: "form-control col-sm-10" %>
-      <span class="mt-auto ml-3">円</span>
+      <%= f.label :税抜価格, class: "col-sm-7" %>
+      <%= f.text_field :price, class: "form-control col-sm-10" %> 円
     </div>
-  
+
     <div class="form-group">
-          <%= f.label :販売ステータス, class: "col-sm-6" %>
+          <%= f.label :販売ステータス, class: "col-sm-7" %>
           <%= f.select :is_active, [["販売中","販売中"], ["販売停止中","販売停止中"]], class: "form-control col-sm-10" %>
     </div>
     </div>
