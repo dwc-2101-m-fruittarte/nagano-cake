@@ -44,7 +44,14 @@
           <!--  end), {include_blank: '配送先を選択'} %>-->
         </div>
 
+        <div class="row mt-5">
+          <%= f.submit '確認画面へ進む', class: "btn btn-sm btn-outline-danger ml-auto" %>
+        </div>
+
+    </div>
+
     <div class=" offset-1 col-3">
+
       <div class="row">
           <%= radio_button_tag :select, :new_address %>
         <strong class="red-border px-3">新しいお届け先</strong>
@@ -64,11 +71,10 @@
 
         <div class="row">
           <%= f.submit '確認画面へ進む', class: "btn btn-sm btn-outline-danger ml-auto" %>
+          <% end %>
         </div>
     </div>
-    <% end %>
   </div>
-</div>
 </div>
 
 
