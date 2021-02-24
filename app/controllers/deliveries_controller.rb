@@ -6,12 +6,14 @@ class DeliveriesController < ApplicationController
   end
 
   def create
-    @delivery = Delivery.new(deliveries_params)
+    @delivery = Delivery.new(delivery_params)
     @delivery.customer_id = current_customer.id
     if @delivery.save
-       redirect_to deliveries_path
+      @delivery_new = Delivery.new
+      @deliveries = current_customer.deliveries
+      redirect_to deliveries_path
     else
-       render :index
+      render :index
     end
   end
 
@@ -21,8 +23,11 @@ class DeliveriesController < ApplicationController
 
   def update
     @delivery = Delivery.find(params[:id])
-    delivery.update(deliveries_params)
-    redirect_to deliveries_path
+    if delivery.update(delivery_params)
+      redirect_to deliveries_path
+    else
+      render 'deliveries/edit'
+    end
   end
 
   def destroy
@@ -33,8 +38,8 @@ class DeliveriesController < ApplicationController
 
   private
 
-  def deliveries_params
-      params.require(:deliveries).permit(:customers_id, :name, :postcode, :address)
+  def delivery_params
+      params.require(:delivery).permit(:name, :postcode, :address)
   end
 
 end

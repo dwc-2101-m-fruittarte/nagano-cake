@@ -13,15 +13,15 @@ Rails.application.routes.draw do
     patch '/orders/:id/order_status' => 'orders#order_status_update', as: "order_status"
     patch '/orders/:id/make_status' => 'orders#make_status_update', as: "item_status" # 製作ステータスupdate
 
-#   resources :deliveries
-    
+  #resources :deliveries,
+
   end
 
   devise_for :customers, contollers: {
     registrations: 'customers/registrations',
     sessions:      'customers/sessions'
   }
-  
+
   root :to => "homes#top"
   get "homes/about" => "homes#about"
 
@@ -43,7 +43,7 @@ Rails.application.routes.draw do
       end
     end
 
-  resources :deliveries
+  resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
   resources :products, only: [:index, :show] do
     resources :cart_items, only: [:create]
   end
