@@ -14,43 +14,43 @@
                  <%= f.hidden_field :bill, :value => @order.bill %>
         </div>
 
-      <h4>お届け先</h4>
-      <div class="col-xs-offset-1">
-        <%= f.radio_button(:delivery_addr, "my_addr", {:checked => true}) %> ご自身の住所
-        <div class="col-xs-offset-1">
-          <%= "#{current_customer.postcode} #{current_customer.address} #{current_customer.family_name} #{current_customer.first_name}" %>
-        </div>
-      </div>
+      <!--<h4>お届け先</h4>-->
+      <!--<div class="col-xs-offset-1">-->
+       <!--#f.radio_button(:delivery_addr, "my_addr", {:checked => true}) -->
+        <!--<div class="col-xs-offset-1">-->
+         <!--#"#{current_customer.postcode} #{current_customer.address} #{current_customer.family_name} #{current_customer.first_name}" %>-->
+        <!--</div>-->
+      <!--</div>-->
 
 
 
 
 
-      <div class="col-xs-offset-1">
-        <%= f.radio_button(:delivery_addr, "new_addr") %> 新しいお届け先
+      <!--<div class="col-xs-offset-1">-->
+         <!--f.radio_button(:delivery_addr, "new_addr") %> 新しいお届け先-->
 
-        <div class="col-xs-offset-1">
-          <div class="form-group order-input-margin">
-            <label class="col-xs-4">郵便番号(ハイフンなし)</label>
-            <div class="col-xs-5">
-              <%= f.text_field :new_post_cd,class: "form-control order-input-margin" %>
-            </div>
-          </div>
+        <!--<div class="col-xs-offset-1">-->
+          <!--<div class="form-group order-input-margin">-->
+            <!--<label class="col-xs-4">郵便番号(ハイフンなし)</label>-->
+            <!--<div class="col-xs-5">-->
+               <!--f.text_field :new_post_cd,class: "form-control order-input-margin" %>-->
+            <!--</div>-->
+          <!--</div>-->
 
-          <div class="form-group">
-            <label class="col-xs-4">住所</label>
-            <div class="col-xs-8">
-              <%= f.text_field :new_address,class: "form-control order-input-margin" %>
-            </div>
-          </div>
+          <!--<div class="form-group">-->
+            <!--<label class="col-xs-4">住所</label>-->
+            <!--<div class="col-xs-8">-->
+               <!--f.text_field :new_address,class: "form-control order-input-margin" %>-->
+            <!--</div>-->
+          <!--</div>-->
 
-          <div class="form-group">
-            <label class="col-xs-4">宛名</label>
-            <div class="col-xs-5">
-              <%= f.text_field :new_name,class: "form-control"%>
-            </div>
-          </div>
-      </div>
+          <!--<div class="form-group">-->
+            <!--<label class="col-xs-4">宛名</label>-->
+            <!--<div class="col-xs-5">-->
+               <!--f.text_field :new_name,class: "form-control"%>-->
+            <!--</div>-->
+          <!--</div>-->
+      <!--</div>-->
 
       <div class="row">
         <div class="col-xs-12 text-center">
