@@ -42,7 +42,7 @@
 
 <div class="row">
       <div class="col-xs-2">
-        <h4>お届け先</h4>                      
+        <h4>お届け先</h4>
       </div>
       <div class="col-xs-4">
         <h4><%= @postcode %> <%= @address %></h4>
@@ -120,7 +120,7 @@
         <strong class="red-border px-3 mr-3">　お届け先　</strong>
         <span class="brown-border px-3">
           <% if  session[:address] %>
-           <%= "〒" + @address.postcode + "  " + @address.address + "  " + @address.family_name + @address.first_name %><span>様</span>
+           <%= "〒" + @address.postcode + "  " + @address.address + "  " + @address.name %><span>様</span>
           <% else %>
             <%= session[:address] %><span>様</span>
           <% end %>

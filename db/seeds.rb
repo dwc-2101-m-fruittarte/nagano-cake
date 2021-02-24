@@ -28,4 +28,5 @@ Product.create!(
    name: 'ケーキ',
    price: '10,000',
    introduction: 'ケーキです'
+   
 )
