@@ -11,6 +11,8 @@ class DeliveriesController < ApplicationController
     if @delivery.save
        redirect_to deliveries_path
     else
+       @delivery_new = Delivery.new
+		   @deliveries = current_user.deliveries
        render :index
     end
   end

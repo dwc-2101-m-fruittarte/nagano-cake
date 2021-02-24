@@ -3,6 +3,25 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @order.bill = current_customer.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + 800
+    # @carts = current_customer.carts
+    @order = Order.new(order_params)
+    @payment_method = params[:order][:payment_method]
+    @delivery_addr = params[:order][:address]
+    case @delivery_addr
+    when "my_addr" then
+      @postcode = current_customer.postcode
+      @address = current_customer.address
+      @name = current_customer.last_name + " " + current_customer.first_name
+    when "registered_addr" then
+      delivery = Delivery.find(params[:order][:registered_address])
+      @post_code = delivery.postcode
+      @address = delivery.address
+      @name = delivery.name
+    when "new_addr" then
+      @post_code = params[:order][:new_post_cd]
+      @address = params[:order][:new_address]
+      @name = params[:order][:new_name]
+    end
   end
 
   def index
@@ -49,7 +68,7 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:payment_method, :bill, :address)
+    params.require(:order).permit(:payment_method, :bill, :address, :postcode, :name, :customer_id)
   end
 
 end
