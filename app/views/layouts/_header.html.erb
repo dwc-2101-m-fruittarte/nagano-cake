@@ -11,11 +11,12 @@
           <li><%= link_to ' マイページ', customers_mypage_path, class: "btn btn-default" %></li>
           <li><%= link_to ' 商品一覧', products_path, class: "btn btn-default" %></li>
           <li><%= link_to ' カート', cart_items_path, class: "btn btn-default" %></li>
-          <li><%= link_to ' ログアウト', destroy_customer_session_path, method: :delete, class: "btn btn-info" %></li>
+          <li><%= link_to ' ログアウト', destroy_customer_session_path, method: :delete, class: "btn btn-default" %></li>
         <% elsif manager_signed_in? %>
           <li><%= link_to "商品一覧", managers_products_path, class: "btn btn-default" %></li>
           <li><%= link_to "会員一覧", managers_customers_path, class: "btn btn-default" %></li>
           <li><%= link_to "注文履歴一覧", managers_orders_path, class: "btn btn-default" %></li>
+          <li><%= link_to "ジャンル一覧", managers_genres_path , class: "btn btn-default" %></li>
           <li><%= link_to "ログアウト", destroy_manager_session_path, method: :delete, class: "btn btn-default" %></li>
         <% else %>
           <li><%= link_to ' About', homes_about_path, class: "btn btn-default" %></li>

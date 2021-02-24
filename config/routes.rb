@@ -6,7 +6,8 @@ Rails.application.routes.draw do
     registrations: 'managers/registrations'
   }
   namespace :managers do
-    resources :products
+    resources :products, only: [:new, :create, :index, :show, :edit, :update]
+    resources :genres, only: [:index, :edit, :create, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders
     patch '/orders/:id/order_status' => 'orders#order_status_update', as: "order_status"
